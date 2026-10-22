@@ -1,0 +1,11 @@
+[package]
+name = "meshnet"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+iroh = "0.98"
+tun-rs = { version = "2.8", features = ["async"] }
+tokio = { version = "1.52", features = ["full"] }
+clap = { version = "4.6", features = ["derive"] }
+n0-error = "0.1"

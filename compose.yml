@@ -1,0 +1,20 @@
+services:
+  listener:
+    build: .
+    command: ["listen", "--ip", "10.0.0.1"]
+    cap_add:
+      - NET_ADMIN
+    devices:
+      - /dev/net/tun:/dev/net/tun
+    stdin_open: true
+    tty: true
+
+  connector:
+    build: .
+    command: ["connect", "--ip", "10.0.0.2", "${PEER_ID:-placeholder}"]
+    cap_add:
+      - NET_ADMIN
+    devices:
+      - /dev/net/tun:/dev/net/tun
+    depends_on:
+      - listener
